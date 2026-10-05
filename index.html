@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="shortcut icon" href="./imagem/Create a polish.png" type="image/x-icon">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Pães artesanais, doces e encomendas da Panificadora & Empório Dona Clara."
+  >
+  <title>Dona Clara | Panificadora & Empório</title>
+
+  <style>
+    :root {
+      --verde: #264b3b;
+      --verde-escuro: #1d382d;
+      --verde-claro: #e9efe9;
+      --creme: #faf7f0;
+      --papel: #fffdf8;
+      --terracota: #c66b45;
+      --texto: #292923;
+      --texto-suave: #77766e;
+      --borda: #e9e4d9;
+      --sombra: 0 12px 35px rgba(39, 52, 40, 0.09);
+      --raio: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: var(--creme);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 8px 16px;
+      color: white;
+      background: var(--verde);
+      text-align: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250, 247, 240, 0.96);
+      border-bottom: 1px solid var(--borda);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--verde);
+      font-family: Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      display: block;
+      color: var(--verde);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      font-weight: bold;
+      line-height: 1.15;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: var(--texto-suave);
+      font-size: 0.75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracota);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: var(--verde);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--verde-escuro);
+      transform: translateY(-1px);
+    }
+
+    .button-light {
+      color: var(--verde);
+      background: white;
+      border: 1px solid var(--borda);
+    }
+
+    .button-light:hover {
+      color: white;
+      background: var(--verde);
+    }
+
+    .hero {
+      padding: 70px 0 54px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 15px;
+      color: var(--terracota);
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.12;
+    }
+
+    h1 {
+      max-width: 610px;
+      margin: 0 0 20px;
+      color: var(--verde);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      max-width: 540px;
+      margin: 0 0 26px;
+      color: var(--texto-suave);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .rating {
+      margin-top: 27px;
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+    }
+
+    .stars {
+      color: #d49a3f;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-art {
+      min-height: 360px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 44% 44% 24px 24px;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,.8) 0 4%, transparent 4.5%),
+        radial-gradient(circle at 20% 78%, rgba(255,255,255,.5) 0 5%, transparent 5.5%),
+        linear-gradient(145deg, #ead9b5, #d4b985);
+    }
+
+    .hero-art::before,
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+    }
+
+    .hero-art::before {
+      width: 290px;
+      height: 290px;
+    }
+
+    .hero-art::after {
+      width: 355px;
+      height: 355px;
+    }
+
+    .bread-emoji {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(8rem, 18vw, 13rem);
+      filter: drop-shadow(0 22px 15px rgba(70, 43, 18, 0.18));
+      transform: rotate(-10deg);
+    }
+
+    .art-label {
+      position: absolute;
+      right: 18px;
+      bottom: 20px;
+      z-index: 2;
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: var(--verde);
+      background: rgba(255, 253, 248, 0.92);
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .benefits {
+      padding: 22px 0;
+      background: #f1eee5;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--verde);
+      text-align: left;
+    }
+
+    .benefit-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      flex: 0 0 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: white;
+      font-size: 1.15rem;
+    }
+
+    .benefit strong,
+    .benefit span {
+      display: block;
+    }
+
+    .benefit span {
+      color: var(--texto-suave);
+      font-size: 0.82rem;
+    }
+
+    section {
+      scroll-margin-top: 95px;
+    }
+
+    .menu-section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2,
+    .story h2,
+    .order-intro h2 {
+      margin: 0;
+      color: var(--verde);
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .section-heading p {
+      margin: 8px 0 0;
+      color: var(--texto-suave);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 0 0 25px;
+    }
+
+    .filter-button {
+      padding: 9px 16px;
+      border: 1px solid var(--borda);
+      border-radius: 999px;
+      color: var(--texto);
+      background: var(--papel);
+      cursor: pointer;
+    }
+
+    .filter-button.active,
+    .filter-button:hover {
+      color: white;
+      background: var(--verde);
+      border-color: var(--verde);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      background: var(--papel);
+      box-shadow: 0 5px 18px rgba(39, 52, 40, 0.035);
+      transition: 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra);
+    }
+
+    .product-art {
+      min-height: 145px;
+      display: grid;
+      place-items: center;
+      background: var(--verde-claro);
+      font-size: 4.2rem;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 5px;
+      color: var(--verde);
+      font-size: 1.2rem;
+    }
+
+    .product-description {
+      min-height: 42px;
+      margin: 0 0 14px;
+      color: var(--texto-suave);
+      font-size: 0.86rem;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .product-price {
+      color: var(--verde);
+      font-weight: bold;
+    }
+
+    .add-button {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      color: white;
+      background: var(--verde);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      background: var(--terracota);
+    }
+
+    .event-banner {
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      border-radius: 26px;
+      color: white;
+      background: var(--verde);
+    }
+
+    .event-banner .eyebrow {
+      color: #edc69d;
+    }
+
+    .event-banner h2 {
+      max-width: 600px;
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .event-banner p {
+      max-width: 610px;
+      margin: 0;
+      color: rgba(255,255,255,.78);
+    }
+
+    .event-banner .button {
+      color: var(--verde);
+      background: white;
+      white-space: nowrap;
+    }
+
+    .story {
+      padding: 78px 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .story-art {
+      min-height: 290px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 25% 25%, #f8e9c9 0 12%, transparent 12.5%),
+        linear-gradient(135deg, #d8c29a, #eee1c6);
+      font-size: 6rem;
+    }
+
+    .story p {
+      color: var(--texto-suave);
+    }
+
+    .story a {
+      color: var(--terracota);
+      font-weight: bold;
+    }
+
+    .order-section {
+      padding: 70px 0;
+      background: #f1eee5;
+    }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      align-items: start;
+      gap: 38px;
+    }
+
+    .order-intro p {
+      color: var(--texto-suave);
+    }
+
+    .pickup-note {
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 14px;
+      color: var(--verde);
+      background: white;
+      font-size: 0.9rem;
+    }
+
+    .order-card {
+      padding: 26px;
+      border: 1px solid var(--borda);
+      border-radius: 22px;
+      background: var(--papel);
+      box-shadow: var(--sombra);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--verde);
+      font-size: 0.88rem;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+      outline: none;
+      color: var(--texto);
+      background: white;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--verde);
+      box-shadow: 0 0 0 3px rgba(38, 75, 59, 0.1);
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    .cart-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 13px 0 10px;
+      color: var(--verde);
+    }
+
+    .cart-heading h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .text-button {
+      padding: 5px 0;
+      border: 0;
+      color: var(--terracota);
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .cart-items {
+      padding: 13px 0;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .empty-cart {
+      margin: 0;
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 0;
+      font-size: 0.9rem;
+    }
+
+    .cart-item-name {
+      flex: 1;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quantity-controls button {
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--borda);
+      border-radius: 50%;
+      color: var(--verde);
+      background: white;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0 17px;
+      color: var(--verde);
+      font-weight: bold;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+
+    .fine-print {
+      margin: 10px 0 0;
+      color: var(--texto-suave);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: rgba(255,255,255,.8);
+      background: var(--verde-escuro);
+      font-size: 0.88rem;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .story-grid,
+      .order-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 30px;
+      }
+
+      .hero-art {
+        min-height: 300px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story-art {
+        min-height: 220px;
+      }
+
+      .event-banner {
+        grid-template-columns: 1fr;
+      }
+
+      .event-banner .button {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .navbar {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.78rem;
+      }
+
+      .nav-links a:not(.button) {
+        display: none;
+      }
+
+      .nav-links .button {
+        min-height: 40px;
+        padding: 8px 13px;
+      }
+
+      .hero {
+        padding: 48px 0 38px;
+      }
+
+      .hero-art {
+        min-height: 255px;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .benefit {
+        justify-content: flex-start;
+      }
+
+      .menu-section,
+      .story,
+      .order-section {
+        padding: 54px 0;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .products-grid {
+        gap: 12px;
+      }
+
+      .product-art {
+        min-height: 110px;
+        font-size: 3.2rem;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .product-info h3 {
+        font-size: 1.05rem;
+      }
+
+      .product-description {
+        min-height: 58px;
+        font-size: 0.8rem;
+      }
+
+      .event-banner {
+        padding: 28px 22px;
+      }
+
+      .order-card {
+        padding: 18px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    Pães artesanais, doces e encomendas feitas com carinho.
+  </div>
+
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="#inicio" aria-label="Dona Clara, página inicial">
+        <span class="brand-mark">DC</span>
+        <span>
+          <span class="brand-name">Dona Clara</span>
+          <span class="brand-subtitle">Panificadora &amp; Empório</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#historia">Nossa história</a>
+        <a class="button" href="#pedido">Peça agora <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Feito com tempo, servido com carinho</span>
+          <h1>O sabor de casa, no seu tempo.</h1>
+          <p class="hero-copy">
+            Pães de fermentação natural, quitutes artesanais e encomendas
+            especiais. Reserve online e retire fresquinho na loja.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#cardapio">Explorar cardápio ↓</a>
+            <a class="button button-light" href="#pedido">Planejar uma encomenda →</a>
+          </div>
+
+          <p class="rating">
+            <span class="stars">★★★★★</span>
+            Tradição de bairro há 12 anos
+          </p>
+        </div>
+
+        <div class="hero-art" aria-label="Ilustração de pão artesanal">
+          <span class="bread-emoji" aria-hidden="true">🥖</span>
+          <span class="art-label">Feito à mão, todos os dias</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Vantagens">
+      <div class="container benefit-grid">
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">✦</span>
+          <div>
+            <strong>Reserve sem fila</strong>
+            <span>Seu pedido fica separado</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">♧</span>
+          <div>
+            <strong>Produção artesanal</strong>
+            <span>Feito com cuidado e ingredientes selecionados</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">♡</span>
+          <div>
+            <strong>Retire na loja</strong>
+            <span>Escolha o melhor horário para você</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="cardapio">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">O que saiu do forno</span>
+            <h2>Nosso cardápio</h2>
+            <p>Escolha seus favoritos e deixe a gente preparar.</p>
+          </div>
+        </div>
+
+        <div class="filters" aria-label="Filtrar produtos">
+          <button class="filter-button active" data-category="Todos">Todos</button>
+          <button class="filter-button" data-category="Pães">Pães</button>
+          <button class="filter-button" data-category="Doces">Doces</button>
+          <button class="filter-button" data-category="Coloniais">Coloniais</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section class="container" id="encomendas">
+      <div class="event-banner">
+        <div>
+          <span class="eyebrow">Ocasiões especiais</span>
+          <h2>Um encontro bom merece mesa farta.</h2>
+          <p>
+            Tábuas de frios, bolos e coffee breaks para comemorar,
+            reunir ou receber bem.
+          </p>
+        </div>
+        <a class="button" href="#pedido">Fazer uma encomenda →</a>
+      </div>
+    </section>
+
+    <section class="story" id="historia">
+      <div class="container story-grid">
+        <div class="story-art" aria-hidden="true">👩‍🍳</div>
+
+        <div>
+          <span class="eyebrow">Uma história de família</span>
+          <h2>O bairro cresceu. O carinho continua o mesmo.</h2>
+          <p>
+            Clara e Roberto começaram com uma fornada pequena e uma ideia
+            simples: fazer pão de verdade, com bons ingredientes e tempo
+            para a massa crescer.
+          </p>
+          <p>
+            Doze anos depois, seguimos colocando esse cuidado em cada fornada.
+            Venha fazer parte da nossa mesa!
+          </p>
+          <a href="#pedido">Faça seu pedido →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-section" id="pedido">
+      <div class="container order-grid">
+        <div class="order-intro">
+          <span class="eyebrow">Seu pedido, do seu jeito</span>
+          <h2>Reserve agora. Retire fresquinho.</h2>
+          <p>
+            Adicione itens do cardápio ou conte para a gente sobre sua
+            encomenda. Confirmamos disponibilidade e horário pelo WhatsApp.
+          </p>
+          <div class="pickup-note">
+            <strong>⌂ Retirada na loja</strong><br>
+            Escolha a data e o horário no formulário.
+          </div>
+        </div>
+
+        <form class="order-card" id="orderForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="customerName">Seu nome</label>
+              <input
+                id="customerName"
+                name="customerName"
+                type="text"
+                placeholder="Como podemos te chamar?"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="pickupDate">Data para retirada</label>
+              <input id="pickupDate" name="pickupDate" type="date" required>
+            </div>
+
+            <div class="field full">
+              <label for="pickupTime">Horário aproximado</label>
+              <select id="pickupTime" name="pickupTime" required>
+                <option value="">Selecione um horário</option>
+                <option>08:00–10:00</option>
+                <option>10:00–12:00</option>
+                <option>14:00–16:00</option>
+                <option>16:00–18:00</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="notes">Observações ou encomenda especial</label>
+              <textarea
+                id="notes"
+                name="notes"
+                placeholder="Ex.: bolo para 10 pessoas, sabor chocolate..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="cart-heading">
+            <h3>Seu carrinho</h3>
+            <button class="text-button" id="clearCart" type="button">Limpar</button>
+          </div>
+
+          <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Ainda não há itens no carrinho.</p>
+          </div>
+
+          <div class="cart-total">
+            <span>Total estimado</span>
+            <span id="cartTotal">R$ 0,00</span>
+          </div>
+
+          <button class="button submit-button" type="submit">
+            Continuar pelo WhatsApp ↗
+          </button>
+
+          <p class="fine-print">
+            O pedido só será confirmado após resposta da equipe.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong>Dona Clara — Panificadora &amp; Empório</strong>
+        <p>Feito com carinho no nosso bairro.</p>
+      </div>
+      <div>
+        <p>Segunda a sábado · 7h às 19h</p>
+        <p>Rua das Flores, 120 · Atualize este endereço</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      IMPORTANTE:
+      Troque o número abaixo pelo WhatsApp da empresa.
+      Use código do país + DDD + número, sem espaços, parênteses ou traços.
+      Exemplo de formato: 5511999999999
+    */
+    const WHATSAPP_NUMBER = "5500000000000";
+
+    const products = [
+      {
+        id: 1,
+        name: "Pão de fermentação natural",
+        description: "Casca crocante e miolo macio. Aproximadamente 500 g.",
+        price: 22,
+        category: "Pães",
+        emoji: "🍞"
+      },
+      {
+        id: 2,
+        name: "Pão de queijo",
+        description: "Porção com 6 unidades, quentinhas e feitas na casa.",
+        price: 16,
+        category: "Pães",
+        emoji: "🧀"
+      },
+      {
+        id: 3,
+        name: "Croissant artesanal",
+        description: "Folhado amanteigado, preparado com cuidado.",
+        price: 12,
+        category: "Pães",
+        emoji: "🥐"
+      },
+      {
+        id: 4,
+        name: "Bolo de cenoura",
+        description: "Fatia generosa com cobertura de chocolate.",
+        price: 14,
+        category: "Doces",
+        emoji: "🍰"
+      },
+      {
+        id: 5,
+        name: "Pão de mel",
+        description: "Massa macia com especiarias e cobertura de chocolate.",
+        price: 9,
+        category: "Doces",
+        emoji: "🍯"
+      },
+      {
+        id: 6,
+        name: "Cuca colonial",
+        description: "Fatia do dia com farofa doce crocante.",
+        price: 13,
+        category: "Coloniais",
+        emoji: "🥧"
+      },
+      {
+        id: 7,
+        name: "Geleia artesanal",
+        description: "Pote de 250 g. Consulte os sabores disponíveis.",
+        price: 18,
+        category: "Coloniais",
+        emoji: "🍓"
+      },
+      {
+        id: 8,
+        name: "Biscoitos da casa",
+        description: "Pacote artesanal para acompanhar o café.",
+        price: 15,
+        category: "Doces",
+        emoji: "🍪"
+      }
+    ];
+
+    const cart = {};
+    let selectedCategory = "Todos";
+
+    const productsGrid = document.getElementById("productsGrid");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      }).format(value);
+    }
+
+    function renderProducts() {
+      const visibleProducts = selectedCategory === "Todos"
+        ? products
+        : products.filter(product => product.category === selectedCategory);
+
+      productsGrid.innerHTML = visibleProducts.map(product => `
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">${product.emoji}</div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-bottom">
+              <span class="product-price">${formatCurrency(product.price)}</span>
+              <button
+                class="add-button"
+                type="button"
+                aria-label="Adicionar ${product.name} ao carrinho"
+                data-add="${product.id}"
+              >+</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      document.querySelectorAll("[data-add]").forEach(button => {
+        button.addEventListener("click", () => {
+          const id = Number(button.dataset.add);
+          cart[id] = (cart[id] || 0) + 1;
+          renderCart();
+        });
+      });
+    }
+
+    function renderCart() {
+      const cartEntries = Object.entries(cart)
+        .filter(([, quantity]) => quantity > 0);
+
+      if (cartEntries.length === 0) {
+        cartItems.innerHTML =
+          '<p class="empty-cart">Ainda não há itens no carrinho.</p>';
+        cartTotal.textContent = formatCurrency(0);
+        return;
+      }
+
+      let total = 0;
+
+      cartItems.innerHTML = cartEntries.map(([id, quantity]) => {
+        const product = products.find(item => item.id === Number(id));
+        const subtotal = product.price * quantity;
+        total += subtotal;
+
+        return `
+          <div class="cart-item">
+            <span class="cart-item-name">
+              ${product.name}<br>
+              <strong>${formatCurrency(subtotal)}</strong>
+            </span>
+            <span class="quantity-controls">
+              <button
+                type="button"
+                aria-label="Remover uma unidade de ${product.name}"
+                data-change="${id}"
+                data-amount="-1"
+              >−</button>
+              <span>${quantity}</span>
+              <button
+                type="button"
+                aria-label="Adicionar uma unidade de ${product.name}"
+                data-change="${id}"
+                data-amount="1"
+              >+</button>
+            </span>
+          </div>
+        `;
+      }).join("");
+
+      cartTotal.textContent = formatCurrency(total);
+
+      document.querySelectorAll("[data-change]").forEach(button => {
+        button.addEventListener("click", () => {
+          const id = Number(button.dataset.change);
+          const amount = Number(button.dataset.amount);
+
+          cart[id] = (cart[id] || 0) + amount;
+
+          if (cart[id] <= 0) {
+            delete cart[id];
+          }
+
+          renderCart();
+        });
+      });
+    }
+
+    document.querySelectorAll(".filter-button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".filter-button").forEach(item => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        selectedCategory = button.dataset.category;
+        renderProducts();
+      });
+    });
+
+    document.getElementById("clearCart").addEventListener("click", () => {
+      Object.keys(cart).forEach(id => delete cart[id]);
+      renderCart();
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const customerName = document.getElementById("customerName").value.trim();
+      const pickupDate = document.getElementById("pickupDate").value;
+      const pickupTime = document.getElementById("pickupTime").value;
+      const notes = document.getElementById("notes").value.trim();
+
+      const cartEntries = Object.entries(cart)
+        .filter(([, quantity]) => quantity > 0);
+
+      if (cartEntries.length === 0 && notes === "") {
+        alert("Adicione um produto ao carrinho ou escreva uma encomenda especial.");
+        return;
+      }
+
+      const orderLines = cartEntries.map(([id, quantity]) => {
+        const product = products.find(item => item.id === Number(id));
+        return `• ${product.name} — ${quantity} x ${formatCurrency(product.price)}`;
+      });
+
+      const total = cartEntries.reduce((sum, [id, quantity]) => {
+        const product = products.find(item => item.id === Number(id));
+        return sum + product.price * quantity;
+      }, 0);
+
+      const message = [
+        "Olá! Gostaria de fazer um pedido na Dona Clara.",
+        "",
+        `Nome: ${customerName}`,
+        `Data para retirada: ${pickupDate}`,
+        `Horário aproximado: ${pickupTime}`,
+        "",
+        "Pedido:",
+        orderLines.length ? orderLines.join("\n") : "• Encomenda especial",
+        "",
+        `Total estimado: ${formatCurrency(total)}`,
+        notes ? `Observações: ${notes}` : ""
+      ].filter(Boolean).join("\n");
+
+      const whatsappUrl =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    });
+
+    // Impede a seleção de uma data anterior a hoje.
+    const today = new Date();
+    const localToday = new Date(
+      today.getTime() - today.getTimezoneOffset() * 60000
+    ).toISOString().split("T")[0];
+
+    document.getElementById("pickupDate").min = localToday;
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
